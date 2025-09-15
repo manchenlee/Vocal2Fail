@@ -4,7 +4,7 @@ The demo page is available at [here](https://manchenlee.github.io/vocal2fail).
 
 ## Usage
 
-After training, please use [**CREPE**](https://github.com/marl/crepe) to extract the F0 from both the generated audio and the [source audio] (https://drive.google.com/file/d/1EQ_N8Vvp3j4VHp5qZRWgLdtBIYJEsdGV/view?usp=sharing).
+After training, please use [**CREPE**](https://github.com/marl/crepe) to extract the F0 from both the generated audio and the [source audio](https://drive.google.com/file/d/1EQ_N8Vvp3j4VHp5qZRWgLdtBIYJEsdGV/view?usp=sharing).
 
 ### Objective Metrics
 ```
