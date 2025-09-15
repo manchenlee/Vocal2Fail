@@ -23,7 +23,7 @@ python evaluate.py --exp [expname] --src_dir [path/to/source/f0] --gen_dir [path
 ```
 **QbSH Evaluation**  
 
-The QbSH system uses a database consisting of [MIDI files](https://drive.google.com/file/d/1owhCIMoHuhXfWHI2eU4UDzZPGu0Kg7Nw/view).  
+The QbSH system uses a database consisting of MIDI files.  
 First, convert the MIDI files into pitch vectors (`.npy`):  
 ```
 python midi2pv.py --midi_dir [path/to/midi] --pv_dir [path/to/output/pv]
