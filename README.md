@@ -6,8 +6,10 @@ The demo page is available at [here](https://manchenlee.github.io/vocal2fail).
 
 Our FR109-plus dataset is divided into two subsets: 
 - consistent set (FR109 dataset)  
-- inconsistent set (addtional segments)  
-The consistent set (FR109 dataset) can be downloaded from [Zenodo](https://zenodo.org/records/14250703"), while the inconsistent set (addtional segments) is available at [Google drive](https://drive.google.com/file/d/1q0yOEa77r8Ylol38bkkbutd6gdNzHhsn/view?usp=sharing).  
+- inconsistent set (addtional segments)
+
+The consistent set can be downloaded from [Zenodo](https://zenodo.org/records/14250703"), while the inconsistent set is available at [Google drive](https://drive.google.com/file/d/1q0yOEa77r8Ylol38bkkbutd6gdNzHhsn/view?usp=sharing).  
+
 Additionally, for the QbSH-based evaluation, we manually transcribed the main melodies of all 20 songs in NUS48E as targets.  
 The corresponding 20 MIDI files and 2,000 non-target MIDI files can be downloaded from [here](https://drive.google.com/file/d/1owhCIMoHuhXfWHI2eU4UDzZPGu0Kg7Nw/view?usp=sharing).  
 
