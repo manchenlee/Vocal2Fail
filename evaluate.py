@@ -18,17 +18,17 @@ def get_pitch(filename, metrics = "dtw"):
         pitch = [p - (12 * (p // 12)) for p in pitch]
     return pitch, df
 
-def pitch_class_l1(src_files, synth_files):
+def pitch_class_l1(src_files, gen_files):
     l1_total = 0.
-    for i in tqdm(range(len(synth_files))):
+    for i in tqdm(range(len(gen_files))):
             pitch_src, df_src = get_pitch(src_files[i], "l1")
-            pitch_synth, df_synth = get_pitch(synth_files[i], "l1")
+            pitch_gen, df_gen = get_pitch(gen_files[i], "l1")
             l1 = 0.0
             count = 0
             for p in range(len(pitch_src)):
                 try:
-                    if df_src['confidence'][p] >= THRESHOLD and df_synth['confidence'][p] >= THRESHOLD:
-                        diff = abs(pitch_src[p] - pitch_synth[p])
+                    if df_src['confidence'][p] >= THRESHOLD and df_gen['confidence'][p] >= THRESHOLD:
+                        diff = abs(pitch_src[p] - pitch_gen[p])
                         if diff > 6:
                             diff = 12 - diff
                         l1 += diff
@@ -37,20 +37,20 @@ def pitch_class_l1(src_files, synth_files):
                     break
             l1 = l1 / count
             l1_total += l1
-    return l1_total / len(synth_files)
+    return l1_total / len(gen_files)
 
-def dtw_dist(src_files, synth_files):
+def dtw_dist(src_files, gen_files):
     total_dist = 0.0
-    for i in tqdm(range(len(synth_files))):
+    for i in tqdm(range(len(gen_files))):
             pitch_src, _ = get_pitch(src_files[i], "dtw")
-            pitch_synth, _ = get_pitch(synth_files[i], "dtw")
+            pitch_gen, _ = get_pitch(gen_files[i], "dtw")
             try:
-                result = dtw(pitch_synth, pitch_src, step_pattern='typeIId', distance_only=True)
+                result = dtw(pitch_gen, pitch_src, step_pattern='typeIId', distance_only=True)
             except:
-                result = dtw(pitch_synth, pitch_src, step_pattern='symmetric2', distance_only=True)
+                result = dtw(pitch_gen, pitch_src, step_pattern='symmetric2', distance_only=True)
             dist = result.normalizedDistance
             total_dist += dist
-    return total_dist / len(synth_files)
+    return total_dist / len(gen_files)
 
 def hnr(wav_files):
     sf_sum = 0.0
@@ -67,24 +67,24 @@ def hnr(wav_files):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--src_dir', type=str, help="path to f0 (.f0.csv) of source audio")
-    parser.add_argument('--synth_dir', type=str, help='path to f0 (.f0.csv) of generated audio')
-    parser.add_argument('--wav_dir', type=str, help='path to wav files of generated audio')
     parser.add_argument('--exp', type=str, default="test", help='exp name')
+    parser.add_argument('--src_dir', type=str, help="path to f0 (.f0.csv) of source audio")
+    parser.add_argument('--gen_dir', type=str, help='path to f0 (.f0.csv) of generated audio')
+    parser.add_argument('--wav_dir', type=str, help='path to wav files of generated audio')
     a = parser.parse_args()
 
     src_files = glob.glob(os.path.join(a.src_dir, "*.csv"))
-    synth_files = glob.glob(os.path.join(a.synth_dir, "*.csv"))
+    gen_files = glob.glob(os.path.join(a.gen_dir, "*.csv"))
     wav_files = glob.glob(os.path.join(a.wav_dir, "*.wav"))
 
-    assert len(src_files) == len(synth_files)
+    assert len(src_files) == len(gen_files)
     result = {}
 
     print("--- calculate Pitch Class L1 ---")
-    result['pitch_class_l1'] = pitch_class_l1(src_files, synth_files)
+    result['pitch_class_l1'] = pitch_class_l1(src_files, gen_files)
     
     print("--- calculate DTW distance ---")
-    result['dtw_dist'] = dtw_dist(src_files, synth_files)
+    result['dtw_dist'] = dtw_dist(src_files, gen_files)
     
     print("--- calculate HNR ---")
     result['hnr'] = hnr(wav_files)

@@ -102,9 +102,9 @@ def dtw_emd_qbsh(pv_dir, query_dir, duration=DURATION, hop_size=QBSH_HOP_SIZE):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('--exp', type=str, help="exp name")
     parser.add_argument('--pv_dir', type=str, help='path to pitch vector (.npy) of database')
     parser.add_argument('--query_dir', type=str, help="path to f0 (.f0.csv) of query audio")
-    parser.add_argument('--exp', type=str, help="exp name")
     a = parser.parse_args()
     result = {}
     result["top1"], result["top20"], result["mrr"] = dtw_emd_qbsh(a.pv_dir, a.query_dir)
