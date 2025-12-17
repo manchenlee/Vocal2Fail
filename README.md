@@ -14,7 +14,7 @@ Additionally, for the QbSH-based evaluation, we manually transcribed the main me
 
 ## Models
 
-We adopt the [VAE-GAN framework](https://github.com/RussellSB/tt-vae-gan) proposed by Bonnici et al..  
+We adopt the [**VAE-GAN** framework](https://github.com/RussellSB/tt-vae-gan) proposed by Bonnici et al..  
 Both the generator and discriminator were optimized using the Adam optimizer with a learning rate of $\eta = 10^{-4}$. The model was trained for 100 epochs with a batch size of 4.
 
 ## Usage
