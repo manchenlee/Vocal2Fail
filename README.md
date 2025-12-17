@@ -12,11 +12,17 @@ The consistent set can be downloaded from [Zenodo](https://zenodo.org/records/14
 
 Additionally, for the QbSH-based evaluation, we manually transcribed the main melodies of all 20 songs in NUS48E as targets. The corresponding 20 MIDI files can be downloaded from [here](https://drive.google.com/file/d/1tgjfFxTjAmmUEGoTKGprhCg9FN8vE-Hs/view?usp=sharing).  
 
+## Models
+
+We adopt the [VAE-GAN framework](https://github.com/RussellSB/tt-vae-gan) proposed by Bonnici et al.. Both the generator and discriminator were optimized using the Adam optimizer with a learning rate of η=10−4. The model was trained for 100 epochs with a batch size of 4.
+
 ## Usage
 
 After training, please use [**CREPE**](https://github.com/marl/crepe) to extract the F0 from both the generated audio and the source audio (NUS48E).
 
 **Objective Metrics**  
+This code computes Pitch Class L1, DTW distance and HNR.  
+As for FAD, We utilized the **VGGish** architecture as the feature extractor. The test set of FR109-plus was used as the reference for real audio.
 ```
 python evaluate.py --exp [expname] --src_dir [path/to/source/f0] --gen_dir [path/to/gen/f0] --wav_dir [path/to/gen/wav]
 ```
