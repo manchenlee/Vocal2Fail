@@ -22,6 +22,7 @@ Both the generator and discriminator were optimized using the Adam optimizer wit
 After training, please use [**CREPE**](https://github.com/marl/crepe) to extract the F0 from both the generated audio and the source audio (NUS48E).
 
 **Objective Metrics**  
+
 This code computes Pitch Class L1, DTW distance and HNR.  
 The DTW distance is computed in the pitch domain. We employed Type II (d) from the Rabiner-Myers step patterns for the DTW computation.  
 As for FAD, We utilized the **VGGish** architecture as the feature extractor. The test set of FR109-plus was used as the reference for real audio.
