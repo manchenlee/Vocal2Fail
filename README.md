@@ -24,6 +24,10 @@ After training, please use [**CREPE**](https://github.com/marl/crepe) to extract
 **Objective Metrics**  
 
 This code computes Pitch Class L1, DTW distance and HNR.  
+First, extract F0 (`.f0.csv`) from wav files: 
+```
+python get_f0.py --src_dir [path/to/wav] --output [path/to/output/f0]
+```
 The DTW distance is computed in the pitch domain. We employed Type II (d) from the Rabiner-Myers step patterns for the DTW computation.  
 As for FAD, We utilized the **VGGish** architecture as the feature extractor. The test set of FR109-plus was used as the reference for real audio.
 ```
