@@ -15,8 +15,14 @@ Additionally, for the QbSH-based evaluation, we manually transcribed the main me
 ## Models
 
 We adopt the [VAE-GAN](https://github.com/RussellSB/tt-vae-gan) framework proposed by Bonnici et al..  
-Both the generator and discriminator were optimized using the Adam optimizer with a learning rate of $\eta = 10^{-4}$. The model was trained for 100 epochs with a batch size of 4.
+Both the generator and discriminator were optimized using the Adam optimizer with a learning rate of $\eta = 10^{-4}$. The model was trained for 100 epochs with a batch size of 4.  
 
+To ensure reproducibility, we provide the following pre-trained weights used in our experiments:  
+- VAE-GAN: Trained for 100 epochs on the FR109-plus dataset.
+- Attribute Vector: The pre-computed inharmonic attribute vector (`attr.npy`) for controllable timbre transfer.
+- Vocoder: A [BigVSAN](https://github.com/sony/bigvsan) vocoder fine-tuned for 20,000 steps to ensure high-quality synthesis for recorder timbres.
+
+You can download these files from [Google Drive](https://drive.google.com/file/d/1Llcrx3RDtUCfS_yfGBMnc7j_P1bdfoNc/view?usp=sharing).
 ## Usage
 
 After training, please use [**CREPE**](https://github.com/marl/crepe) to extract the F0 from both the generated audio and the source audio (NUS48E).
