@@ -2,6 +2,11 @@
 This repository is for the paper "Vocal2Fail: Controllable Timbre Transfer and Evaluation for Failed Recorder Style".  
 The demo page is available at [here](https://manchenlee.github.io/vocal2fail).  
 
+## Environment & Hardware Requirements
+
+- **Python Version:** 3.9.19  
+- **GPU:** NVIDIA GeForce RTX 4070  
+
 ## Datasets  
 
 Our FR109-plus dataset is divided into two subsets: 
